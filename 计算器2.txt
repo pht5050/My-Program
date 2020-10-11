@@ -1,0 +1,78 @@
+namespace Calculate_
+{
+    class Character:Calculate
+    {
+        public string Addition(string a, string b)
+        {
+            string c;
+            c = a + b;
+            return c;
+        }
+        //当用户选择减法操作时，可以从用户输入的第一个字符串中去除第二个字符串
+        public string Subtraction(string a, string b)
+        {
+            int i = a.IndexOf(b);    //i= a字符串中第一次出现b字符串的位置
+            string c = a.Remove(i,b.Length);//c= 从字符串a中第i个位置移除b.length个字符
+            return c;
+        }
+    }
+}
+namespace Calculate_
+{
+    class Calculate
+    {
+        public double Addition(double a, double b)
+        {
+            return a + b;
+        }
+        public double Subtraction(double a, double b)
+        {
+            return a - b;
+        }
+        public double Multiplication(double a, double b)
+        {
+            return a * b;
+        }
+        public double Division(double a, double b)
+        {
+            if (b == 0)
+            {
+                Console.WriteLine("0不能作为除数!");
+                return 0;
+            }
+            else
+                return a / b;
+        }
+        public bool Equals(double a, double b)
+        {
+            if (a == b)
+                return true;
+            else
+                return false;
+        }
+    }
+}
+namespace Calculate_
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Calculate c = new Calculate();
+            Console.WriteLine("请分别输入两个数字");
+            double num1 = Convert.ToDouble(Console.ReadLine());
+            double num2 = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("{0}+{1}={2}", num1, num2, c.Addition(num1, num2));
+            Console.WriteLine("{0}-{1}={2}", num1, num2, c.Subtraction(num1, num2));
+            Console.WriteLine("{0}x{1}={2}", num1, num2, c.Multiplication(num1, num2));
+            Console.WriteLine("{0}/{1}={2}", num1, num2, c.Division(num1, num2));
+            Console.WriteLine(c.Equals(num1, num2));
+            Character ch = new Character();
+            Console.WriteLine("请分别输入两个字符串");
+            string a = Convert.ToString(Console.ReadLine());
+            string b = Convert.ToString(Console.ReadLine());
+            Console.WriteLine("{0}+{1}={2}", a,b, ch.Addition(a, b));
+            Console.WriteLine("{0}-{1}={2}", a, b, ch.Subtraction(a,b));
+        }
+    }
+}
