@@ -1,0 +1,112 @@
+namespace Calculate__
+{
+     class Solve:Calculate    //抽象方法实现
+    {
+        public override double Addition(double a, double b)
+        {
+            return a + b;
+        }
+        public override double Subtraction(double a, double b)
+        {
+            return a - b;
+        }
+        public override double Multiplication(double a, double b)
+        {
+            return a * b;
+        }
+        public override double Division(double a, double b)
+        {
+            if (b == 0)
+            {
+                Console.WriteLine("0不能作为除数!");
+                return 0;
+            }
+            else
+                return a / b;
+        }
+        public override bool Equals(double a, double b)
+        {
+            if (a == b)
+                return true;
+            else
+                return false;
+        }
+        public override double Surplus(double a, double b)
+        {
+            double c = a % b;
+            return c;
+        }
+        public override int And(int a, int b)
+        {
+            int c = a & b;
+            return c;
+        }
+    }
+}
+namespace Calculate__
+{
+    class Character:Solve 
+    {
+        public string Addition(string a, string b)
+        {
+            string c;
+            c = a + b;
+            return c;
+        }
+        //当用户选择减法操作时，可以从用户输入的第一个字符串中去除第二个字符串
+        public string Subtraction(string a, string b)
+        {
+            int i = a.IndexOf(b);    //i= a字符串中第一次出现b字符串的位置
+            string c = a.Remove(i, b.Length);//c= 从字符串a中第i个位置移除b.length个字符
+            return c;
+        }
+    }
+}
+namespace Calculate__
+{
+    abstract class Calculate     //抽象类
+    {
+        public abstract double Addition(double a, double b);
+
+        public abstract double Subtraction(double a, double b);
+
+        public abstract double Multiplication(double a, double b);     //抽象方法声明
+
+        public abstract double Division(double a, double b);
+
+        public abstract bool Equals(double a, double b);
+
+        public abstract double Surplus(double a, double b);
+
+        public abstract int And(int a, int b);
+    }
+}
+namespace Calculate__
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Solve c = new Solve();
+            Console.WriteLine("请分别输入两个数字");
+            double num1 = Convert.ToDouble(Console.ReadLine());
+            double num2 = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("{0}+{1}={2}", num1, num2, c.Addition(num1, num2));
+            Console.WriteLine("{0}-{1}={2}", num1, num2, c.Subtraction(num1, num2));
+            Console.WriteLine("{0}x{1}={2}", num1, num2, c.Multiplication(num1, num2));
+            Console.WriteLine("{0}/{1}={2}", num1, num2, c.Division(num1, num2));
+            Console.WriteLine("{0}%{1}={2}", num1, num2, c.Surplus(num1, num2));
+            Console.WriteLine(c.Equals(num1, num2));
+            Character ch = new Character();
+            Console.WriteLine("请分别输入两个字符串");
+            string a = Convert.ToString(Console.ReadLine());
+            string b = Convert.ToString(Console.ReadLine());
+            Console.WriteLine("{0}+{1}={2}", a, b, ch.Addition(a, b));
+            Console.WriteLine("{0}-{1}={2}", a, b, ch.Subtraction(a, b));
+            Console.WriteLine("请分别输入两个整数");
+            int num3 = Convert.ToInt16(Console.ReadLine());
+            int num4 = Convert.ToInt16(Console.ReadLine());
+            Console.WriteLine("{0}&{1}={2}", num3, num4, c.And(num3, num4));
+        }
+    }
+}
