@@ -1,0 +1,4 @@
+E:\c++\自建数据\2.5Calculator\2.5Calculator\bin\Debug\2.5Calculator.exe
+E:\c++\自建数据\2.5Calculator\2.5Calculator\bin\Debug\2.5Calculator.pdb
+E:\c++\自建数据\2.5Calculator\2.5Calculator\obj\x86\Debug\2.5Calculator.exe
+E:\c++\自建数据\2.5Calculator\2.5Calculator\obj\x86\Debug\2.5Calculator.pdb
